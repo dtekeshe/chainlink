@@ -368,8 +368,6 @@ func (i Initiator) FriendlyRunAt() string {
 	return ""
 }
 
-var emptyAddress = common.Address{}.String()
-
 // FriendlyAddress returns the Ethereum address if present, and a blank
 // string if not.
 func (i Initiator) FriendlyAddress() string {
