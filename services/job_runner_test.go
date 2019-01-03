@@ -30,11 +30,11 @@ func TestJobRunner_resumeRunsSinceLastShutdown(t *testing.T) {
 	sleepingRun := j.NewRun(i)
 	sleepingRun.Status = models.RunStatusPendingSleep
 	sleepingRun.TaskRuns[0].Status = models.RunStatusPendingSleep
-	assert.NoError(t, store.Save(&sleepingRun))
+	assert.NoError(t, store.SaveJobRun(&sleepingRun))
 
 	inProgressRun := j.NewRun(i)
 	inProgressRun.Status = models.RunStatusInProgress
-	assert.NoError(t, store.Save(&inProgressRun))
+	assert.NoError(t, store.SaveJobRun(&inProgressRun))
 
 	assert.NoError(t, services.ExportedResumeRunsSinceLastShutdown(rm))
 	messages := []string{}
